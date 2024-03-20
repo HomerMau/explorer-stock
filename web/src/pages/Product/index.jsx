@@ -5,6 +5,7 @@ import { Button } from '../../components/Button';
 
 export function Product() {
   const navigate = useNavigate();
+  const { user } = useAuth() 
 
   const products = Array(20)
     .fill({ name: 'Produto' })
@@ -16,7 +17,7 @@ export function Product() {
         <h1>Produtos</h1>
 
         <nav>
-          <Button title="Cadastrar" />
+         { [USER_ROLE.ADMIN].includes(user.role) && <Button title="Cadastrar" />}
           <Button title="Voltar" onClick={() => navigate('/')} />
         </nav>
       </Header>
